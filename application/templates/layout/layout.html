@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document</title>
+
+    <style>
+
+      #root {
+          font-family: 'Playfair Display', serif;
+      }
+
+      .jumbotron {
+          color: white;
+      }
+
+      .btn {
+          border-color: rgba(85, 151, 148, 0.473);
+          background-color: rgba(85, 151, 148, 0.473);
+          color: whitesmoke;
+          border-radius: 15%;
+      }
+
+      .btn:hover {
+          background-color: rgba(56, 179, 179, 0.473);
+      }
+
+    </style>
+    <link rel="stylesheet" href="../../static/bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body id="root">
+    
+    <header id=top-page>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(71, 150, 150);">
+            <a class="navbar-brand" href="{{url_for('index')}}">YoYo101</a>
+           
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href=" {{url_for('index')}} ">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href=" {{url_for('movies')}} ">Movie List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href=" {{url_for('popular')}} ">Popular Movies</a>
+                </li>
+                {% if session["isSuccess"] %}
+                  <li class="nav-item">
+                    <a class="nav-link" href=" {{url_for('favorite')}} ">Your Favorite Movie</a>
+                    <!-- <h1> </h1> -->
+                  </li>
+                {% endif %}
+              </ul>
+              {% if not session["isSuccess"] %}
+                <form class="form-inline my-2 my-lg-0">
+                    <a  href=" {{url_for('login')}} " class="btn my-2">Sign In</a>
+                    <a  href="{{url_for('register')}}" class="btn my-2">Sign Up</a>
+                </form>
+              {% else %}
+                <h5>Welcome {{session["username"]}}</h4>
+                  <a  href="{{url_for('logout')}}" class="btn my-2">logout</a>
+              {% endif %}
+          </nav>
+    </header>
+
+
+
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+
+    <hr>
+    <footer>
+        <div class="d-flex justify-content-center">
+            <h5><span style="color: grey;">Website build by : </span>YoYo101</h5>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="#top">Back to top</a>
+        </div>
+    </footer>
+
+
+</body>
+</html>

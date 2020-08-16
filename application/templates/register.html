@@ -1,0 +1,35 @@
+{% extends 'layout/layout.html' %}
+
+
+
+{% block content %}
+
+    <form action="" method="POST">
+        <div class="row">
+            <div class="col-md-5">
+                <label for="email">Email</label>
+                <input name="email" class="form-control" type="email" placeholder="Enter Your Email">
+            </div>
+            <div class="col-md-5">
+                <label for="username">Username</label>
+                <input name="username" class="form-control" type="text" placeholder="Username">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label for="password">Password</label>
+                <input name="password" class="form-control" type="password" placeholder="Type Your Password">
+            </div>
+            <div class="col-md-5">
+                <label for="retype-password">Re-type Password</label>
+                <input name="retype-password" class="form-control" type="password" placeholder="Re-type Your Password">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <button type="submit" name="enroll-btn" class="btn btn-primary" id="enroll-btn">Sign Up</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

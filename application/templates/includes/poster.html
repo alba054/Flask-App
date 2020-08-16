@@ -1,0 +1,17 @@
+<div class="col-md-8">
+    <div class="row d-flex justify-content-between">
+        <!-- 30 random movies goes here with the poster -->
+        {% for movie in movies %}
+            <div class="col-md-auto">
+                <img src="{{url_for('static', filename='img/jack_reacher.jpg')}}" alt="{{movie.title}}" width="200">
+                <div><h5><a href="{{url_for('movie', id=movie.id, title=movie.title)}}"> {{movie.title}} </a></h5></div>
+                <h6>Release Year : {{movie.release_year}} </h6>
+                <h6>Genre : 
+                    {% for genre in movie.genres %}  
+                        <small>{{genre}}, </small>
+                    {% endfor %}  
+                </h6>
+            </div>
+        {% endfor %}
+    </div>
+</div>

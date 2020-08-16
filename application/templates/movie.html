@@ -1,0 +1,25 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+
+    <img class="my-4" src=" {{url_for('static', filename='img/jack_reacher.jpg')}}" alt=" {{movie.title}} " width="200">
+    <h1> {{movie.title}} </h1>
+    <h4>Release Year : {{movie.release_year}}</h4>
+    <h4>Score : {{movie.score}}</h4>
+    <h4>Genre : {% for genre in movie.genres %} <small>{{genre}}, </small> {% endfor %} </h4>
+    <h5>Synopsis:</h5>
+    {% if movie.synopsis %}
+        <p>{{movie.synopsis}}</p>
+    {% endif %}
+    {% if 'isSuccess' in session %}
+        <a href="" class="nav-link">Give Review</a>
+        {% if not added %}
+            <a href=" {{url_for('added', id=movie.id, title=movie.title)}} " class="nav-link">Add to favorite movie</a>
+        {%else%}
+            <a href="{{url_for('added', id=movie.id, title=movie.title)}}" class="nav-link">Discard from favorite movie</a>
+        {% endif %}
+    {% else %}
+        <a class="btn btn-primary" href=" {{url_for('login')}} ">Sign In</a>
+        <a class="btn btn-primary" href=" {{url_for('register')}} ">Sign Up</a>
+    {% endif %}
+{% endblock %}

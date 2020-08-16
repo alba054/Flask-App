@@ -1,0 +1,6 @@
+/__pychache__
+/application/__pychache__
+application/data/tmdb_5000_movies.csv
+application/static/bootstrap-4.5.0-dist.zip
+/Pipfile
+/Pipfile.lock
